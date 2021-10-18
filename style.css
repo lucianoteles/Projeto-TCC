@@ -10,3 +10,29 @@ body {
   max-width: 700px;
 }
 
+.city{
+  font-size: 24px;
+}
+
+.date{
+  font-size: 16px;
+}
+
+.container-temp{
+  display: flex;
+  justify-content: center;
+  background-color: #90b494;
+  border-radius: 15px;
+
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.weather{
+  font-size: 24px;
+}
+
+.hi-low{
+  font-size: 16px;
+}
