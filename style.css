@@ -36,3 +36,11 @@ body {
 .hi-low{
   font-size: 16px;
 }
+
+.banner
+{
+    background-color: green;
+    width: 1000px;
+    height: 100px;
+
+}
