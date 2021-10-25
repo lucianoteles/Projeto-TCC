@@ -13,10 +13,10 @@
 
 <div class="container py-3">
   <header>
-    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom" >
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <i class="fas fa-tree fa-3x" ></i>
-        <span class="fs-4">&nbsp; Information Tree</span>
+        <i class="fas fa-tree fa-3x" id="logo"></i>
+        <span class="fs-4" id="nome-logo">&nbsp; Information Tree</span>
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
@@ -24,7 +24,7 @@
       </nav>
     </div>
 
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div id="carouselExampleDark" class="carousel  slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -63,7 +63,7 @@
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
       <div class="col">
         <div class="card text-center shadow-lg" style="max-width: 24rem;">
-          <div class="card-header bg-transparent">Tempo e Temperatura</div>
+          <div class="card-header bg-transparent">Clima e Temperatura</div>
           <div class="card-body">
             <div class="city">Cidade Exemplo, BR</div>
             <div class="date">Domingo, 16 Outubro 2021</div>
@@ -93,50 +93,82 @@
         <div class="card text-center shadow-lg" style="max-width: 24rem;">
           <div class="card-header bg-transparent">Qualidade do ar</div>
           <div class="card-body">
-            <div class="city">Cidade, BR</div>
-            <div class="container-img indice-ar">
-              <iframe title="Example Primary Pollutant" height="230" width="230" src="https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city=Raleigh&state=NC&country=USA" style="border: none; border-radius: 25px;"></iframe>
-            </div>
-            
-            <div>informações adicionais</div>
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+            <div class="city">Indice de qualidade:</div>
+            <span class="air-quality">...</span>
+            <span class="arr">&nbsp;&rarr;&nbsp;</span>
+            <span class="air-quality-status">...</span>
           </div>
-          <div class="card-footer bg-transparent">
 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Digite o nome da cidade" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
       <div class="col">
         <div class="card text-center shadow-lg" style="max-width: 24rem;">
-          <div class="card-header bg-transparent">Tempo e Temperatura</div>
+          <div class="card-header bg-transparent">Poluentes</div>
           <div class="card-body">
-            <div class="city">Cidade Exemplo, BR</div>
-            <div class="date">Domingo, 16 Outubro 2021</div>
-            <div class="container-img">
-              <img src="./icons/unknown.png">
-            </div>
-            <div class="container-temp my-4 mx-3">
-              <div>22</div>
-              <span>c</span>
-            </div>
-            <div class="weather">nublado</div>
-            <div class="low-high">22°c / 23°c</div>
-            <div>Clique na temperatura para converter para fahrenheit.</div>
-          </div>
-          <div class="card-footer bg-transparent">
 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Digite o nome da cidade" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                <i class="fas fa-search"></i>
-              </button>
+            <div class="component-container">
+              <span class="sub-heading">
+                Concentração no ar:
+              </span>
+
+              <div>
+                <span class="compotent-names">
+                  Monóxido de carbono:
+                </span>
+                <span class="component-val" data-comp="co"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Monóxido de nitrogênio:
+                </span>
+                <span class="component-val" data-comp="no"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Dióxido de nitrogénio:
+                </span>
+                <span class="component-val" data-comp="no2"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Ozônio:
+                </span>
+                <span class="component-val" data-comp="o3"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Dióxido de enxofre:
+                </span>
+                <span class="component-val" data-comp="so2"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Partículas finas:
+                </span>
+                <span class="component-val" data-comp="pm2_5"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Partículas grossas:
+                </span>
+                <span class="component-val" data-comp="pm10"></span>
+              </div>
+
+              <div>
+                <span class="compotent-names">
+                  Amônia:
+                </span>
+                <span class="component-val" data-comp="nh3"></span>
+              </div>
+
             </div>
+ 
           </div>
         </div>
       </div>
@@ -152,27 +184,27 @@
         <small class="d-block mb-3 text-muted">&copy;2021</small>
       </div>
       <div class="col-6 col-md">
-        <h5>Features</h5>
+        <h5>Recursos</h5>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Temperatura</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Qualidade do ar</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Clima</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Clima e Temperatura</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Indice de qualidade do ar</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Poluentes no ar</a></li>
         
         </ul>
       </div>
       <div class="col-6 col-md">
-        <h5>Orientador</h5>
+        <h5>Api's Utilizadas</h5>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Marcos</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="https://openweathermap.org/api">Open Weather Map</a></li>
         
         </ul>
       </div>
       <div class="col-6 col-md">
-        <h5>Time</h5>
+        <h5>Alunos</h5>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Luciano</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Gabriel</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Wender</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Luciano Teles</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Gabriel Oliveira</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Wender de Souza</a></li>
         </ul>
       </div>
     </div>

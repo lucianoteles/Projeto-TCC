@@ -21,7 +21,7 @@ body {
 .container-temp{
   display: flex;
   justify-content: center;
-  background-color: #90b494;
+  background-color: #3CDA7D;
   border-radius: 15px;
 
   font-size: 28px;
@@ -44,3 +44,23 @@ body {
     height: 100px;
 
 }
+
+.air-quality, .arr, .air-quality-status{
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.compontent-names{
+  display: inline-block;
+  font-size: 18px;
+}
+
+.sub-heading{
+  font-size: 24px;
+}
+
+.component-val{
+  font-size: 1.2rem;
+  margin-left: 16px;
+}
+
