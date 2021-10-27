@@ -1,5 +1,5 @@
 const api = {
-    key: "64ed82577ced7f69cb1687f0ce536131",
+    key: "3607350508cd9384391a091e80828102",
     base: "https://api.openweathermap.org/data/2.5/",
     lang: "pt_br",
     units: "metric"
@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
 })
 
 function coordResults(lat, long) {
-    fetch(`${api.base}weather?lat=${lat}&lon=${long}&lang=${api.lang}&units=${api.units}&APPID=${api.key}`)
+    fetch(`${api.base}weather?lat=${lat}&lon=${long}&lang=${api.lang}&units=${api.units}&appid=${api.key}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`http error: status ${response.status}`)
@@ -131,3 +131,100 @@ function changeTemp() {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+//qualidade do ar
+
+const latInp = document.querySelector("#latitude")
+const lonInp = document.querySelector("#longitude")
+const airQuality = document.querySelector(".air-quality")
+const airQualityStat = document.querySelector(".air-quality-status")
+const srchBtn = document.querySelector(".search-btn")
+const errorLabel= document.querySelector("label[for='error-msg']")
+const componentsEle= document.querySelectorAll(".component-val")
+
+const appId = "5db143697c3673d8d2bb0c1bcb383dd2"
+const link = "http://api.openweathermap.org/data/2.5/air_pollution"
+
+const getUserLocation = () => {
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(onPositionGathered, onPositionGatherError)
+    } else{
+        onPositionGatherError({message: "Não foi possivel obter a localização"})
+    }
+}
+
+const onPositionGathered = pos =>{
+    let lat = pos.coords.latitude.toFixed(4),
+    lon = pos.coords.longitude.toFixed(4)
+
+    latInp.value = lat
+    lonInp.value = lon
+    getAirQuality(lat, lon)
+}
+
+const getAirQuality = async (lat, lon) =>{
+    const rawData = await fetch(`${link}?lat=${lat}&lon=${lon}&appid=${appId}`).catch(err => {
+        onPositionGatherError(err)
+    })
+    const airData = await rawData.json()
+
+    console.log(airData)
+    setValuesOfAir(airData)
+    setComponentsOfAir(airData)
+}
+
+const setValuesOfAir = airData => {
+    const aqi = airData.list[0].main.aqi
+    let airStat = "", cor = ""
+
+    airQuality.innerText = aqi
+
+    switch (aqi){
+        case 1:
+            airStat = "Boa"
+            cor: "rgb(19, 201, 28)"
+            break
+        case 2:
+            airStat = "Aceitável"
+            cor: "rgb(15, 134, 25)"
+            break
+        case 3:
+            airStat = "Moderado"
+            cor: "rgb(201, 204, 13)"
+            break
+        case 4:
+            airStat = "Ruim"
+            cor: "rgb(204, 83, 13)"
+            break
+        case 5:
+            airStat = "Muito Ruim"
+            cor: "rgb(204, 13, 13)"
+            break
+        default:
+            airStat = "Desconhecida"
+
+    }
+    airQualityStat.innerText = airStat
+    airQualityStat.style.color = cor
+    //airQualityStat.style.color = color
+}
+
+setComponentsOfAir = airData => {
+    let component = { ...airData.list[0].components }
+    componentsEle.forEach(ele =>{
+        const attr = ele.getAttribute('data-comp')
+        ele.innerText = component[attr] += 'μg/m3'
+    })
+}
+
+const onPositionGatherError = e => {
+    errorLabel.innerText = e.message
+}
+
+srchBtn.addEventListener("click", () => {
+    let lat = parseFloat(latInp.value).toFixed(4)
+    let lon = parseFloat(lonInp.value).toFixed(4)
+    getAirQuality(lat, lon)
+})
+
+getUserLocation()

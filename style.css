@@ -46,13 +46,15 @@ body {
 }
 
 .air-quality, .arr, .air-quality-status{
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: bold;
 }
 
-.compontent-names{
+.component-names{
   display: inline-block;
   font-size: 18px;
+  margin-bottom: 6px;
+  
 }
 
 .sub-heading{
@@ -60,7 +62,14 @@ body {
 }
 
 .component-val{
-  font-size: 1.2rem;
-  margin-left: 16px;
+  font-size: 18px;
+  font-weight: bold;
 }
+
+.coor{
+  margin-bottom: 12px;
+}
+
+
+
 
